@@ -120,22 +120,36 @@ void process_file_3(const char* input_file, const char* output_file) {
 
     char line[100]; // Buffer para armazenar uma linha inteira
     while (fgets(line, sizeof(line), fin)) {
-        char *nome = strtok(line, "|");
-        char *cidade = strtok(NULL, "|");
-        char *curso = strtok(NULL, "\n"); // Remove o '\n' do final da linha
+        // Encontrar os delimitadores manualmente
+        char *nome = line;
+        char *cidade = NULL;
+        char *curso = NULL;
 
-        if (nome && cidade && curso) {
-            // Exibe os registros na tela
-            printf("Nome=%s | Endereco=%s | Curso=%s |\n", nome, cidade, curso);
-
-            // Grava no novo arquivo formatado
-            fprintf(fout, "Nome=%s | Endereco=%s | Curso=%s |\n", nome, cidade, curso);
+        // Procurando o primeiro delimitador '|'
+        cidade = memchr(nome, '|', strlen(nome));
+        if (cidade) {
+            *cidade = '\0'; // Substituir o delimitador por '\0'
+            cidade++;
         }
+
+        // Procurando o segundo delimitador '|'
+        curso = memchr(cidade, '|', strlen(cidade));
+        if (curso) {
+            *curso = '\0'; // Substituir o delimitador por '\0'
+            curso++;
+        }
+
+        // Exibe os registros na tela
+        printf("Nome=%s | Endereco=%s | Curso=%s |\n", nome, cidade, curso);
+
+        // Grava no novo arquivo formatado
+        fprintf(fout, "Nome=%s | Endereco=%s | Curso=%s |\n", nome, cidade, curso);
     }
 
     fclose(fin);
     fclose(fout);
 }
+
 
 
 
