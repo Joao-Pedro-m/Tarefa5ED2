@@ -1,3 +1,3 @@
-Nome=Bruno | Endereco=S.Carlos | Curso=Computacao |
-Nome=Vanessa | Endereco=S.Paulo | Curso=Computacap |
-Nome=Alexandre | Endereco=B.Horizonte | Curso=Eng.Civil |
+Nome=joao | Endereco=teste | Curso=comp
+Nome=antony | Endereco=pvh | Curso=eng
+Nome=anita | Endereco=juda | Curso=comp

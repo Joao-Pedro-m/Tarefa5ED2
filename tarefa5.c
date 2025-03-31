@@ -140,10 +140,10 @@ void process_file_3(const char* input_file, const char* output_file) {
         }
 
         // Exibe os registros na tela
-        printf("Nome=%s | Endereco=%s | Curso=%s |\n", nome, cidade, curso);
+        printf("Nome=%s | Endereco=%s | Curso=%s\n", nome, cidade, curso);
 
         // Grava no novo arquivo formatado
-        fprintf(fout, "Nome=%s | Endereco=%s | Curso=%s |\n", nome, cidade, curso);
+        fprintf(fout, "Nome=%s | Endereco=%s | Curso=%s", nome, cidade, curso);
     }
 
     fclose(fin);
