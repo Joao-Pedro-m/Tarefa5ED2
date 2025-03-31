@@ -33,7 +33,7 @@ void create_file_from_input(char* file_name) {
     fclose(file);
 }
 
-void read_and_convert_file(const char* input_file, const char* output_file) {
+void process_file_1(const char* input_file, const char* output_file) {
     FILE *fin = fopen(input_file, "r");
     FILE *fout = fopen(output_file, "w");
 
@@ -55,9 +55,6 @@ void read_and_convert_file(const char* input_file, const char* output_file) {
         endereco[strcspn(endereco, "\n")] = '\0';
         curso[strcspn(curso, "\n")] = '\0';
 
-        // Exibir os registros no terminal
-        printf("Nome: %s | Endereco: %s | Curso: %s\n", nome, endereco, curso);
-
         // Gravar no novo arquivo com o indicador de tamanho
         fprintf(fout, "%02lu%s%02lu%s%02lu%s",
                 strlen(nome), nome,
@@ -69,27 +66,7 @@ void read_and_convert_file(const char* input_file, const char* output_file) {
     fclose(fout);
 }
 
-void read_file_and_print(char* file_name) {
-    FILE *file = fopen(file_name, "r");
-    if (!file) {
-        printf("Erro ao abrir o arquivo para leitura!\n");
-        return;
-    }
-
-    char linha[TAM_MAX];
-    int contador = 1;
-
-    while (fgets(linha, TAM_MAX, file)) {
-        if (contador % 3 == 1) printf("\nAluno %d\n", (contador / 3) + 1);
-        printf("%s", linha);
-        contador++;
-    }
-
-    fclose(file);
-}
-
-
-void process_file(const char* input_file, const char* output_file) {
+void process_file_2(const char* input_file, const char* output_file) {
     FILE *fin = fopen(input_file, "r");
     FILE *fout = fopen(output_file, "w");
 
@@ -130,7 +107,7 @@ void process_file(const char* input_file, const char* output_file) {
     fclose(fout);
 }
 
-void process_file_2(const char* input_file, const char* output_file) {
+void process_file_3(const char* input_file, const char* output_file) {
     FILE *fin = fopen(input_file, "r");
     FILE *fout = fopen(output_file, "w");
 
@@ -165,7 +142,7 @@ void process_file_2(const char* input_file, const char* output_file) {
 
 int main(){
 	create_file_from_input("entrada.txt");
-	read_and_convert_file("entrada.txt","saida1.txt");
-	process_file("saida1.txt","saida2.txt");
-	process_file_2("saida2.txt","saida3.txt");
+	process_file_1("entrada.txt","saida1.txt");
+	process_file_2("saida1.txt","saida2.txt");
+	process_file_3("saida2.txt","saida3.txt");
 }
